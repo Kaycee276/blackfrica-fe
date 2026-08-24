@@ -1,21 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { CardStack } from './CardStack';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { CardStack } from "./CardStack";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
-      
       {/* Abstract Background Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-brand-gold-glow via-transparent to-transparent blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
-          
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -34,7 +31,10 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.1]"
           >
-            BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL <span className="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 bg-clip-text text-transparent">OWNERSHIP...</span>
+            BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL{" "}
+            <span className="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+              OWNERSHIP...
+            </span>
           </motion.h1>
 
           {/* Subheading directly matching Figma */}
@@ -44,7 +44,9 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl text-text-secondary max-w-3xl leading-relaxed font-normal"
           >
-            To redefine the value of African modeling by turning creativity, identity, and culture into on-chain assets that empower models and connect global fans.
+            To redefine the value of African modeling by turning creativity,
+            identity, and culture into on-chain assets that empower models and
+            connect global fans.
           </motion.p>
 
           {/* CTA Action Buttons matching Figma frame 16 */}
@@ -84,23 +86,38 @@ export const Hero = () => {
         {/* Metric Badges */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-border-primary max-w-5xl mx-auto">
           <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">100%</h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">On-Chain Provenance</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">
+              100%
+            </h3>
+            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
+              On-Chain Provenance
+            </p>
           </div>
           <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">$1.2M+</h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">Creator Value Generated</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
+              $1.2M+
+            </h3>
+            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
+              Creator Value Generated
+            </p>
           </div>
           <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">500+</h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">Verified African Models</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">
+              500+
+            </h3>
+            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
+              Verified African Models
+            </p>
           </div>
           <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">0%</h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">Middleman Exploitation</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
+              0%
+            </h3>
+            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
+              Middleman Exploitation
+            </p>
           </div>
         </div>
-
       </div>
     </section>
   );
