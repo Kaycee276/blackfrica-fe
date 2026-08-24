@@ -6,7 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
-  const headlineText = "BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL OWNERSHIP...";
+  const coloredPart = "BRIDGING AFRICAN MODELING, FASHION, Art, AND ";
+  const monochromePart = "DIGITAL OWNERSHIP...";
   
   // Brand color sequence in exact user order: Green, Red, Gold, Brown, Black
   const colorCycle = [
@@ -24,14 +25,14 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
           
-          {/* Main Headline with letter-by-letter brand color cycling: Green, Red, Gold, Brown, Black */}
+          {/* Main Headline: Colored brand sequence for first part, straight up Black/White for DIGITAL OWNERSHIP... */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight uppercase leading-[1.05] font-mamakilo"
           >
-            {headlineText.split("").map((char, index) => {
+            {coloredPart.split("").map((char, index) => {
               if (char === " ") {
                 return <span key={index}> </span>;
               }
@@ -43,6 +44,9 @@ export const Hero = () => {
                 </span>
               );
             })}
+
+            {/* Straight up Black in light mode / White in dark mode for DIGITAL OWNERSHIP... */}
+            <span className="text-text-primary">{monochromePart}</span>
           </motion.h1>
 
           {/* Subheading directly matching Figma - wider layout on large screens */}
