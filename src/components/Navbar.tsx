@@ -70,7 +70,7 @@ export const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links with animated hover underline */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -78,19 +78,21 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 relative py-1 ${
+                className={`text-sm font-medium transition-colors duration-200 relative py-1 group ${
                   isActive
                     ? "text-brand-gold font-semibold"
                     : "text-text-secondary hover:text-brand-gold"
                 }`}
               >
                 {link.name}
-                {isActive && (
+                {isActive ? (
                   <motion.span
                     layoutId="activeTabIndicator"
                     className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
+                ) : (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 )}
               </Link>
             );
@@ -143,7 +145,7 @@ export const Navbar = () => {
           {/* Wallet / Sign In Button */}
           <button
             onClick={openWalletModal}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-text-primary text-bg-primary font-semibold text-xs sm:text-sm hover:bg-brand-gold hover:text-black transition-all shadow-md active:scale-95 ml-1"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-transparent text-text-primary border border-text-primary font-semibold text-xs sm:text-sm hover:bg-brand-gold hover:text-black transition-all active:scale-95 ml-1"
           >
             <span>
               {isConnected && address
@@ -153,7 +155,7 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile top bar controls (Sign in button brought OUT, theme toggle inside drawer) */}
+        {/* Mobile top bar controls */}
         <div className="flex md:hidden items-center gap-2">
           {/* Discord Icon */}
           <a
@@ -210,8 +212,12 @@ export const Navbar = () => {
               animate="open"
               exit="closed"
               variants={{
-                open: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
-                closed: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
+                open: {
+                  transition: { staggerChildren: 0.05, delayChildren: 0.05 },
+                },
+                closed: {
+                  transition: { staggerChildren: 0.03, staggerDirection: -1 },
+                },
               }}
               className="flex flex-col gap-3"
             >
@@ -227,9 +233,10 @@ export const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-text-primary hover:text-brand-gold py-1 block"
+                    className="text-base font-medium text-text-primary hover:text-brand-gold py-1 block group relative w-fit"
                   >
                     {link.name}
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                   </Link>
                 </motion.div>
               ))}
