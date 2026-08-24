@@ -1,25 +1,33 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useAppStore } from '@/store/useAppStore';
-import { collectionsData } from '@/data/collectionsData';
-import { creatorsData } from '@/data/creatorsData';
-import { Search, X, ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useAppStore } from "@/store/useAppStore";
+import { collectionsData } from "@/data/collectionsData";
+import { creatorsData } from "@/data/creatorsData";
+import { Search, X, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const SearchModal = () => {
-  const { searchOpen, setSearchOpen, searchQuery, setSearchQuery } = useAppStore();
+  const { searchOpen, setSearchOpen, searchQuery, setSearchQuery } =
+    useAppStore();
 
   if (!searchOpen) return null;
 
   const filteredCollections = searchQuery
-    ? collectionsData.filter(c => c.title.toLowerCase().includes(searchQuery.toLowerCase()) || c.creator.toLowerCase().includes(searchQuery.toLowerCase()))
+    ? collectionsData.filter(
+        (c) =>
+          c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.creator.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
     : collectionsData.slice(0, 3);
 
   const filteredCreators = searchQuery
-    ? creatorsData.filter(c => c.name.toLowerCase().includes(searchQuery.toLowerCase()) || c.role.toLowerCase().includes(searchQuery.toLowerCase()))
+    ? creatorsData.filter(
+        (c) =>
+          c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.role.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
     : creatorsData.slice(0, 3);
 
   return (
@@ -52,14 +60,13 @@ export const SearchModal = () => {
 
           {/* Search Results */}
           <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-            
             {/* Collections matching search */}
             <div>
               <h4 className="text-xs font-mono uppercase font-bold text-text-muted mb-3 tracking-wider">
                 Collections ({filteredCollections.length})
               </h4>
               <div className="space-y-2">
-                {filteredCollections.map(col => (
+                {filteredCollections.map((col) => (
                   <Link
                     key={col.id}
                     href="/collections"
@@ -68,13 +75,21 @@ export const SearchModal = () => {
                   >
                     <div className="flex items-center gap-3">
                       <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-black">
-                        <Image src={col.image} alt={col.title} fill sizes="48px" className="object-cover" />
+                        <Image
+                          src={col.image}
+                          alt={col.title}
+                          fill
+                          sizes="48px"
+                          className="object-cover"
+                        />
                       </div>
                       <div>
                         <h5 className="text-sm font-bold text-text-primary group-hover:text-brand-gold transition-colors">
                           {col.title}
                         </h5>
-                        <p className="text-xs text-text-muted">by {col.creator} • {col.price}</p>
+                        <p className="text-xs text-text-muted">
+                          by {col.creator} • {col.price}
+                        </p>
                       </div>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-text-muted group-hover:text-brand-gold transition-transform" />
@@ -89,7 +104,7 @@ export const SearchModal = () => {
                 Creators ({filteredCreators.length})
               </h4>
               <div className="space-y-2">
-                {filteredCreators.map(cr => (
+                {filteredCreators.map((cr) => (
                   <Link
                     key={cr.id}
                     href="/creators"
@@ -98,13 +113,21 @@ export const SearchModal = () => {
                   >
                     <div className="flex items-center gap-3">
                       <div className="relative w-10 h-10 rounded-full overflow-hidden border border-brand-gold">
-                        <Image src={cr.avatar} alt={cr.name} fill sizes="40px" className="object-cover" />
+                        <Image
+                          src={cr.avatar}
+                          alt={cr.name}
+                          fill
+                          sizes="40px"
+                          className="object-cover"
+                        />
                       </div>
                       <div>
                         <h5 className="text-sm font-bold text-text-primary group-hover:text-brand-gold transition-colors">
                           {cr.name}
                         </h5>
-                        <p className="text-xs text-text-muted">{cr.role} • {cr.followers} Followers</p>
+                        <p className="text-xs text-text-muted">
+                          {cr.role} • {cr.followers} Followers
+                        </p>
                       </div>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-text-muted group-hover:text-brand-gold transition-transform" />
@@ -112,7 +135,6 @@ export const SearchModal = () => {
                 ))}
               </div>
             </div>
-
           </div>
         </motion.div>
       </div>

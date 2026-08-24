@@ -2,39 +2,22 @@
 
 import Link from "next/link";
 import { CardStack } from "./CardStack";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
-      {/* Abstract Background Gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-brand-gold-glow via-transparent to-transparent blur-3xl pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-gold-border bg-brand-gold-glow text-brand-gold text-xs sm:text-sm font-medium tracking-wide uppercase"
-          >
-            <Sparkles className="w-4 h-4 text-brand-gold" />
-            <span>Empowering African Cultural Provenance</span>
-          </motion.div>
-
-          {/* Main Headline directly matching Figma */}
+          {/* Main Headline formatted with the new MamaKilo African font */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.1]"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.1] font-mamakilo"
           >
-            BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
-              OWNERSHIP...
-            </span>
+            BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL OWNERSHIP...
           </motion.h1>
 
           {/* Subheading directly matching Figma */}

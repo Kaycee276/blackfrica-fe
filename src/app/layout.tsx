@@ -54,6 +54,23 @@ const neueGalano = localFont({
   display: 'swap',
 });
 
+const mamaKilo = localFont({
+  src: [
+    {
+      path: './fonts/MamaKilo Decorative.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/MamaKilo Black.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-mamakilo',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'BLACKfrica | On-Chain African Modeling, Fashion & Art',
   description:
@@ -66,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${neueGalano.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`dark ${neueGalano.variable} ${mamaKilo.variable}`} suppressHydrationWarning>
       <body className="bg-bg-primary text-text-primary font-sans font-light antialiased min-h-screen flex flex-col justify-between selection:bg-brand-gold selection:text-black">
         <ThemeProvider>
           <Navbar />
