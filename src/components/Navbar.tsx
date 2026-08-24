@@ -37,6 +37,13 @@ export const Navbar = () => {
     { name: "About", href: "/about" },
   ];
 
+  // Normalize current pathname to ensure strict route matching
+  const currentPath = pathname
+    ? pathname.length > 1 && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname
+    : "/";
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -73,7 +80,11 @@ export const Navbar = () => {
         {/* Desktop Navigation Links with Active Page Underline & Left-to-Right Hover Animation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive =
+              link.href === "/"
+                ? currentPath === "/"
+                : currentPath === link.href || currentPath.startsWith(`${link.href}/`);
+
             return (
               <motion.div
                 key={link.name}
@@ -92,7 +103,7 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
 
-                {/* Persistent Underline on Currently Active Page */}
+                {/* Persistent Underline on Currently Active Page ONLY */}
                 {isActive ? (
                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full" />
                 ) : (
@@ -235,7 +246,11 @@ export const Navbar = () => {
               className="flex flex-col gap-3"
             >
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive =
+                  link.href === "/"
+                    ? currentPath === "/"
+                    : currentPath === link.href || currentPath.startsWith(`${link.href}/`);
+
                 return (
                   <motion.div
                     key={link.name}
