@@ -34,7 +34,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         root.classList.remove('dark');
       }
 
-      // Trigger 3D Peeling overlay of the old theme lifting off
+      // Trigger slow 3D garment peeling transition
       setPeelState({
         isPeeling: true,
         oldTheme,
@@ -43,7 +43,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
       const timer = setTimeout(() => {
         setPeelState((prev) => ({ ...prev, isPeeling: false }));
-      }, 900);
+      }, 1650);
 
       prevThemeRef.current = theme;
 
@@ -63,67 +63,86 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     <>
       {children}
 
-      {/* Realistic 3D Cloth Layer Peel Overlay */}
+      {/* Slow Hyper-Realistic 3D Garment Peel Overlay */}
       <AnimatePresence>
         {peelState.isPeeling && (
-          <div className="fixed inset-0 z-[9999] pointer-events-none [perspective:1400px] overflow-hidden">
+          <div className="fixed inset-0 z-[9999] pointer-events-none [perspective:2000px] overflow-hidden">
             
-            {/* Ambient drop shadow cast on the new theme underneath */}
+            {/* Ambient drop shadow cast on the new theme underneath as cloth lifts */}
             <motion.div
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="absolute inset-0 bg-black/50 pointer-events-none"
+              initial={{ opacity: 0.7 }}
+              animate={{ opacity: [0.7, 0.4, 0] }}
+              transition={{ duration: 1.6, ease: [0.25, 1, 0.5, 1] }}
+              className="absolute inset-0 bg-black/60 pointer-events-none backdrop-blur-[1px]"
             />
 
-            {/* The Old Theme Layer Peeling & Curling Away in 3D */}
+            {/* Main Peeling Garment Sheet (Old Theme Layer) */}
             <motion.div
               initial={{
                 x: '0%',
                 y: '0%',
                 rotateZ: 0,
                 rotateY: 0,
+                rotateX: 0,
                 skewY: 0,
                 scale: 1,
               }}
               animate={{
-                x: '-135%',
-                y: '35%',
-                rotateZ: -25,
-                rotateY: 18,
-                skewY: -8,
-                scale: 0.96,
+                x: '-145%',
+                y: '45%',
+                rotateZ: -28,
+                rotateY: 22,
+                rotateX: -10,
+                skewY: -12,
+                scale: 0.94,
               }}
               transition={{
-                duration: 0.85,
-                ease: [0.16, 1, 0.3, 1], // realistic physical cloth pull curve
+                duration: 1.6,
+                ease: [0.25, 1, 0.5, 1], // slow luxurious physical pull curve
               }}
               style={{
                 transformOrigin: 'bottom left',
                 transformStyle: 'preserve-3d',
               }}
-              className={`absolute inset-0 w-full h-full border-r-8 border-amber-500/50 ${
+              className={`absolute inset-0 w-full h-full border-r-[10px] border-amber-500/60 ${
                 peelState.oldTheme === 'dark'
-                  ? 'bg-[#131212] text-white shadow-[40px_40px_90px_rgba(0,0,0,0.9)]'
-                  : 'bg-white text-neutral-900 shadow-[40px_40px_90px_rgba(0,0,0,0.4)]'
+                  ? 'bg-[#131212] text-white shadow-[50px_50px_120px_rgba(0,0,0,0.95)]'
+                  : 'bg-white text-neutral-900 shadow-[50px_50px_120px_rgba(0,0,0,0.5)]'
               }`}
             >
-              {/* Fabric Fold Lighting & Backside Curl Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-amber-500/10 to-transparent pointer-events-none" />
+              {/* Garment Fabric Grain & Shadow Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-amber-500/10 to-transparent pointer-events-none" />
 
-              {/* Edge Roll Highlight */}
+              {/* Garment Inner Lining (Reversed Gold/Black Silk Backside) */}
+              <div className="absolute top-0 right-0 bottom-0 w-48 bg-gradient-to-l from-amber-600/40 via-amber-500/20 to-transparent pointer-events-none" />
+
+              {/* Moving Fabric Wrinkle & Fold Edge Highlight */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.85 }}
-                className="absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-l from-amber-400/30 via-white/20 to-transparent pointer-events-none"
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: '-100%', opacity: [0, 1, 0.8, 0] }}
+                transition={{ duration: 1.6, ease: 'easeInOut' }}
+                className="absolute inset-y-0 w-40 bg-gradient-to-r from-transparent via-amber-400/40 to-transparent pointer-events-none blur-sm"
               />
 
-              {/* Tag on Peeling Garment */}
-              <div className="absolute top-12 right-12 flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 backdrop-blur-md text-amber-500 text-xs font-mono font-bold uppercase tracking-widest border border-amber-500/40 shadow-xl">
-                <span>Peeling Garment Layer</span>
+              {/* High Fashion Garment Tag */}
+              <div className="absolute top-14 right-14 flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-amber-500/25 backdrop-blur-md text-amber-400 text-xs font-mono font-bold uppercase tracking-widest border border-amber-500/50 shadow-2xl">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span>Unveiling On-Chain Identity...</span>
               </div>
             </motion.div>
+
+            {/* Second Drag Wave: Trailing Silk Under-Lining Edge */}
+            <motion.div
+              initial={{ x: '0%', y: '0%', rotateZ: 0 }}
+              animate={{ x: '-125%', y: '35%', rotateZ: -20 }}
+              transition={{
+                duration: 1.4,
+                delay: 0.1,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+              style={{ transformOrigin: 'bottom left' }}
+              className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-600/30 to-amber-500/10 border-r-2 border-amber-400/40 pointer-events-none"
+            />
 
           </div>
         )}
