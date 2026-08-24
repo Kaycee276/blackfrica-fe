@@ -92,7 +92,7 @@ export const Navbar = () => {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 ) : (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-brand-gold rounded-full transition-all duration-300 ease-out" />
                 )}
               </Link>
             );
@@ -236,7 +236,7 @@ export const Navbar = () => {
                     className="text-base font-medium text-text-primary hover:text-brand-gold py-1 block group relative w-fit"
                   >
                     {link.name}
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-brand-gold rounded-full transition-all duration-300 ease-out" />
                   </Link>
                 </motion.div>
               ))}
