@@ -2,22 +2,109 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ==========================================================================
+   SINGLE SOURCE OF TRUTH DESIGN TOKENS
+   All colors, surfaces, typography, accents, and borders defined here.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Surfaces & Backgrounds --- */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+
+  /* --- Cards & Modals --- */
+  --card-bg: #ffffff;
+  --card-surface: #f9fafb;
+  --card-border: #e5e7eb;
+
+  /* --- Typography & Text --- */
+  --text-primary: #171717;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-heading: #0f172a;
+
+  /* --- Brand Accents (Blackfrica Gold / Amber) --- */
+  --brand-gold: #f59e0b;
+  --brand-gold-hover: #d97706;
+  --brand-gold-light: #fbbf24;
+  --brand-gold-dark: #b45309;
+  --brand-gold-glow: rgba(245, 158, 11, 0.15);
+  --brand-gold-border: rgba(245, 158, 11, 0.3);
+
+  /* --- Borders, Dividers & Outlines --- */
+  --border-primary: #e5e7eb;
+  --border-secondary: #f3f4f6;
+  --border-muted: #d1d5db;
+
+  /* --- Scrollbar & Utility --- */
+  --scrollbar-thumb: #d4d4d4;
+  --scrollbar-track: var(--bg-primary);
 }
 
 .dark {
-  --background: #131212;
-  --foreground: #ffffff;
+  /* --- Surfaces & Backgrounds --- */
+  --bg-primary: #131212;
+  --bg-secondary: #151414;
+  --bg-tertiary: #1a1919;
+
+  /* --- Cards & Modals --- */
+  --card-bg: #1a1919;
+  --card-surface: #222121;
+  --card-border: #2a2828;
+
+  /* --- Typography & Text --- */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-heading: #f8fafc;
+
+  /* --- Borders, Dividers & Outlines --- */
+  --border-primary: #262525;
+  --border-secondary: #1f1e1e;
+  --border-muted: #374151;
+
+  /* --- Scrollbar & Utility --- */
+  --scrollbar-thumb: #2a2828;
+  --scrollbar-track: var(--bg-primary);
 }
 
+/* --- Tailwind v4 Theme Tokens Mapping --- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  --color-card-bg: var(--card-bg);
+  --color-card-surface: var(--card-surface);
+  --color-card-border: var(--card-border);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-heading: var(--text-heading);
+
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-hover: var(--brand-gold-hover);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-gold-glow: var(--brand-gold-glow);
+  --color-brand-gold-border: var(--brand-gold-border);
+
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-muted: var(--border-muted);
+
   --font-sans: var(--font-galano), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-mono), monospace;
 }
+
+/* ==========================================================================
+   GLOBAL UTILITIES & TRANSITIONS
+   ========================================================================== */
 
 *,
 *::before,
@@ -26,43 +113,37 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-galano), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
 }
 
-/* Custom High-Fashion Scrollbar Styling */
+/* ==========================================================================
+   CUSTOM HIGH-FASHION SCROLLBAR
+   ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d4;
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
-  border: 2px solid var(--background);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #2a2828;
-  border: 2px solid var(--background);
+  border: 2px solid var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b !important; /* Amber gold hover highlight */
+  background: var(--brand-gold) !important;
 }
 
 /* Firefox scrollbar support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #d4d4d4 transparent;
-}
-
-.dark * {
-  scrollbar-color: #2a2828 transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
