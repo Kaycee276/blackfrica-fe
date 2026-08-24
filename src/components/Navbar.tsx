@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Sun, Moon, Search, Wallet, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Search, Wallet, Menu, X } from 'lucide-react';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useAppStore } from '@/store/useAppStore';
 import { useWalletStore } from '@/store/useWalletStore';
@@ -33,24 +33,27 @@ export const Navbar = () => {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#131212]/80 border-b border-neutral-200 dark:border-neutral-800/60 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden rounded-lg border border-amber-500/30 bg-black flex items-center justify-center">
+        {/* Brand Logo - Swaps between Light and Dark mode assets */}
+        <Link href="/" className="flex items-center group">
+          <div className="relative w-36 h-10 overflow-hidden">
+            {/* Light Mode Logo */}
             <Image
-              src="/assets/blackfrica-logo.png"
+              src="/assets/Blackfrica-logo-light.png"
               alt="BLACKfrica Logo"
               fill
-              sizes="40px"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="150px"
+              className="object-contain block dark:hidden group-hover:scale-105 transition-transform duration-300"
+              priority
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-xl tracking-wider text-neutral-900 dark:text-white uppercase font-sans">
-              BLACK<span className="text-amber-500">frica</span>
-            </span>
-            <span className="text-[10px] tracking-widest text-neutral-500 dark:text-neutral-400 uppercase -mt-1 font-mono">
-              On-Chain Identity
-            </span>
+            {/* Dark Mode Logo */}
+            <Image
+              src="/assets/Blackfrica-logo-dark.png"
+              alt="BLACKfrica Logo"
+              fill
+              sizes="150px"
+              className="object-contain hidden dark:block group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
           </div>
         </Link>
 
@@ -110,7 +113,11 @@ export const Navbar = () => {
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-semibold text-sm hover:bg-amber-600 dark:hover:bg-amber-400 dark:hover:text-neutral-950 transition-all shadow-md active:scale-95"
           >
             <Wallet className="w-4 h-4" />
-            <span>{isConnected && address ? `${address.slice(0, 6)}...${address.slice(-4)}` : 'Sign in'}</span>
+            <span>
+              {isConnected && address
+                ? `${address.slice(0, 6)}...${address.slice(-4)}`
+                : 'Sign in'}
+            </span>
           </button>
         </div>
 
@@ -121,7 +128,11 @@ export const Navbar = () => {
             className="p-2 rounded-lg text-neutral-600 dark:text-neutral-300"
             aria-label="Toggle theme"
           >
-            {mounted && theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
+            {mounted && theme === 'dark' ? (
+              <Sun className="w-5 h-5 text-amber-400" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
           </button>
 
           <button
@@ -129,7 +140,11 @@ export const Navbar = () => {
             className="p-2 text-neutral-800 dark:text-neutral-200"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
@@ -170,7 +185,11 @@ export const Navbar = () => {
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-500 text-neutral-950 font-bold text-sm"
             >
               <Wallet className="w-4 h-4" />
-              <span>{isConnected && address ? 'Wallet Connected' : 'Sign in / Connect Wallet'}</span>
+              <span>
+                {isConnected && address
+                  ? 'Wallet Connected'
+                  : 'Sign in / Connect Wallet'}
+              </span>
             </button>
           </div>
         </div>
