@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { collectionsData } from '@/data/collectionsData';
 import { useAppStore } from '@/store/useAppStore';
 import { useWalletStore } from '@/store/useWalletStore';
-import { Heart, Sparkles, Filter, ArrowUpRight } from 'lucide-react';
+import { Heart, Sparkles, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const CollectionsGrid = () => {
@@ -38,18 +38,18 @@ export const CollectionsGrid = () => {
   };
 
   return (
-    <section className="py-16 bg-neutral-50 dark:bg-[#151414] transition-colors">
+    <section className="py-16 bg-bg-secondary transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-border-primary pb-6">
           <div>
-            <div className="flex items-center gap-2 text-amber-500 font-mono text-xs uppercase tracking-widest mb-2">
+            <div className="flex items-center gap-2 text-brand-gold font-mono text-xs uppercase tracking-widest mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Curated Cultural Assets</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold uppercase text-neutral-900 dark:text-white tracking-tight">
-              ON-CHAIN <span className="text-amber-500">COLLECTIONS</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold uppercase text-text-primary tracking-tight">
+              ON-CHAIN <span className="text-brand-gold">COLLECTIONS</span>
             </h2>
           </div>
 
@@ -61,8 +61,8 @@ export const CollectionsGrid = () => {
                 onClick={() => setActiveCollectionCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
                   activeCollectionCategory === cat.id
-                    ? 'bg-amber-500 text-neutral-950 shadow-md'
-                    : 'bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800'
+                    ? 'bg-brand-gold text-black shadow-md'
+                    : 'bg-card-bg text-text-secondary hover:bg-bg-tertiary border border-border-primary'
                 }`}
               >
                 {cat.label}
@@ -83,10 +83,10 @@ export const CollectionsGrid = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="group rounded-2xl bg-white dark:bg-[#1A1919] border border-neutral-200 dark:border-neutral-800 p-4 shadow-sm hover:shadow-xl dark:hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between"
+                className="group rounded-2xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl hover:border-brand-gold transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Image Container */}
-                <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-900 mb-4">
+                <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-bg-primary mb-4">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -113,27 +113,27 @@ export const CollectionsGrid = () => {
                 {/* Info & Price */}
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="relative w-6 h-6 rounded-full overflow-hidden border border-amber-500">
+                    <div className="relative w-6 h-6 rounded-full overflow-hidden border border-brand-gold">
                       <Image src={item.creatorAvatar} alt={item.creator} fill sizes="24px" className="object-cover" />
                     </div>
-                    <span className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                      by <strong className="text-neutral-800 dark:text-neutral-200">{item.creator}</strong>
+                    <span className="text-xs text-text-muted font-medium">
+                      by <strong className="text-text-primary">{item.creator}</strong>
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-amber-500 transition-colors line-clamp-1">
+                  <h3 className="text-lg font-bold text-text-primary group-hover:text-brand-gold transition-colors line-clamp-1">
                     {item.title}
                   </h3>
 
-                  <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between">
+                  <div className="mt-4 pt-3 border-t border-border-primary flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] uppercase font-mono text-neutral-400 block">Reserve Price</span>
-                      <span className="text-base font-extrabold text-amber-600 dark:text-amber-400">{item.price}</span>
+                      <span className="text-[10px] uppercase font-mono text-text-muted block">Reserve Price</span>
+                      <span className="text-base font-extrabold text-brand-gold">{item.price}</span>
                     </div>
 
                     <button
                       onClick={openWalletModal}
-                      className="px-4 py-2 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-bold text-xs hover:bg-amber-500 dark:hover:bg-amber-400 transition-all flex items-center gap-1 group-hover:shadow-md"
+                      className="px-4 py-2 rounded-xl bg-text-primary text-bg-primary font-bold text-xs hover:bg-brand-gold hover:text-black transition-all flex items-center gap-1 group-hover:shadow-md"
                     >
                       <span>Collect</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />

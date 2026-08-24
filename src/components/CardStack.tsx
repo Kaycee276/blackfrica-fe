@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Sparkles, Heart, ExternalLink } from 'lucide-react';
+import { Sparkles, ExternalLink } from 'lucide-react';
 
 interface CardItem {
   id: string;
@@ -70,7 +70,7 @@ export const CardStack = () => {
     <div className="relative w-full py-12 flex flex-col items-center justify-center min-h-[460px]">
       
       {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/15 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-brand-gold-glow blur-3xl rounded-full pointer-events-none" />
 
       <div className="relative w-full max-w-4xl h-[420px] sm:h-[460px] flex items-center justify-center">
         {cards.map((card, idx) => {
@@ -94,12 +94,12 @@ export const CardStack = () => {
                 transition: { duration: 0.25 },
               }}
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className={`absolute cursor-pointer rounded-2xl p-2 bg-[#1A1919] border border-neutral-700/80 shadow-2xl transition-all duration-300 w-[240px] sm:w-[280px] h-[340px] sm:h-[400px] overflow-hidden group ${
-                isActive ? 'ring-2 ring-amber-500/80 shadow-amber-500/10' : 'opacity-90'
+              className={`absolute cursor-pointer rounded-2xl p-2 bg-card-bg border border-card-border shadow-2xl transition-all duration-300 w-[240px] sm:w-[280px] h-[340px] sm:h-[400px] overflow-hidden group ${
+                isActive ? 'ring-2 ring-brand-gold shadow-brand-gold-glow' : 'opacity-90'
               }`}
             >
               {/* Card Image */}
-              <div className="relative w-full h-[82%] rounded-xl overflow-hidden bg-neutral-900">
+              <div className="relative w-full h-[82%] rounded-xl overflow-hidden bg-bg-primary">
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -111,7 +111,7 @@ export const CardStack = () => {
                 />
                 
                 <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-medium text-white border border-white/10 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  <Sparkles className="w-3 h-3 text-brand-gold" />
                   <span>On-Chain</span>
                 </div>
               </div>
@@ -119,13 +119,13 @@ export const CardStack = () => {
               {/* Card Details Footer */}
               <div className="p-3 flex items-center justify-between text-left">
                 <div>
-                  <h4 className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-1">
+                  <h4 className="text-sm font-bold text-text-primary group-hover:text-brand-gold transition-colors line-clamp-1">
                     {card.title}
                   </h4>
-                  <p className="text-xs text-neutral-400 line-clamp-1">by {card.creator}</p>
+                  <p className="text-xs text-text-muted line-clamp-1">by {card.creator}</p>
                 </div>
                 
-                <div className="p-1.5 rounded-lg bg-neutral-800 text-amber-400 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+                <div className="p-1.5 rounded-lg bg-bg-tertiary text-brand-gold group-hover:bg-brand-gold group-hover:text-black transition-colors">
                   <ExternalLink className="w-4 h-4" />
                 </div>
               </div>

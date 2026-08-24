@@ -67,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${neueGalano.variable}`} suppressHydrationWarning>
-      <body className="bg-white dark:bg-[#131212] text-neutral-900 dark:text-neutral-100 font-sans font-light antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+      <body className="bg-bg-primary text-text-primary font-sans font-light antialiased min-h-screen flex flex-col justify-between selection:bg-brand-gold selection:text-black">
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
