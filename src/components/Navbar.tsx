@@ -70,21 +70,29 @@ export const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links with animated hover underline */}
+        {/* Desktop Navigation Links with Framer Motion Left-to-Right Hover Underline */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <Link
+              <motion.div
                 key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 relative py-1 group ${
-                  isActive
-                    ? "text-brand-gold font-semibold"
-                    : "text-text-secondary hover:text-brand-gold"
-                }`}
+                initial="initial"
+                whileHover="hover"
+                className="relative py-1"
               >
-                {link.name}
+                <Link
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors duration-200 block ${
+                    isActive
+                      ? "text-brand-gold font-semibold"
+                      : "text-text-secondary hover:text-brand-gold"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+
+                {/* Active Tab Spring Line */}
                 {isActive ? (
                   <motion.span
                     layoutId="activeTabIndicator"
@@ -92,9 +100,18 @@ export const Navbar = () => {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 ) : (
-                  <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-brand-gold rounded-full transition-all duration-300 ease-out" />
+                  /* Left-to-Right Expanding Underline */
+                  <motion.span
+                    variants={{
+                      initial: { scaleX: 0 },
+                      hover: { scaleX: 1 },
+                    }}
+                    style={{ originX: 0 }}
+                    transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                    className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full pointer-events-none"
+                  />
                 )}
-              </Link>
+              </motion.div>
             );
           })}
         </nav>
@@ -221,25 +238,45 @@ export const Navbar = () => {
               }}
               className="flex flex-col gap-3"
             >
-              {navLinks.map((link) => (
-                <motion.div
-                  key={link.name}
-                  variants={{
-                    open: { opacity: 1, y: 0 },
-                    closed: { opacity: 0, y: -8 },
-                  }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-text-primary hover:text-brand-gold py-1 block group relative w-fit"
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial="initial"
+                    whileHover="hover"
+                    variants={{
+                      open: { opacity: 1, y: 0 },
+                      closed: { opacity: 0, y: -8 },
+                    }}
+                    transition={{ duration: 0.25 }}
+                    className="relative w-fit"
                   >
-                    {link.name}
-                    <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-brand-gold rounded-full transition-all duration-300 ease-out" />
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`text-base font-medium py-1 block ${
+                        isActive
+                          ? "text-brand-gold font-semibold"
+                          : "text-text-primary hover:text-brand-gold"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                    {!isActive && (
+                      <motion.span
+                        variants={{
+                          initial: { scaleX: 0 },
+                          hover: { scaleX: 1 },
+                        }}
+                        style={{ originX: 0 }}
+                        transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                        className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full pointer-events-none"
+                      />
+                    )}
+                  </motion.div>
+                );
+              })}
             </motion.div>
 
             <motion.div
