@@ -78,7 +78,7 @@ export const Navbar = () => {
         </nav>
 
         {/* Right Actions & Utilities */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           
           {/* Search Trigger */}
           <button
@@ -104,10 +104,24 @@ export const Navbar = () => {
             )}
           </button>
 
+          {/* Discord Logo Button (Placed immediately after theme toggle) */}
+          <a
+            href="https://discord.gg/blackfrica"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-[#5865F2] dark:hover:text-[#5865F2] transition-colors flex items-center justify-center group"
+            title="Join our Discord community"
+            aria-label="Discord Community"
+          >
+            <svg className="w-5 h-5 fill-current group-hover:scale-110 transition-transform duration-200" viewBox="0 0 127.14 96.36">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a74.56,74.56,0,0,0,64.3,0c.87.69,1.76,1.37,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,121.71,29.12,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.74,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91,65.69,84.69,65.69Z" />
+            </svg>
+          </a>
+
           {/* Wallet / Sign In Button */}
           <button
             onClick={openWalletModal}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-semibold text-sm hover:bg-amber-600 dark:hover:bg-amber-400 dark:hover:text-neutral-950 transition-all shadow-md active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-semibold text-sm hover:bg-amber-600 dark:hover:bg-amber-400 dark:hover:text-neutral-950 transition-all shadow-md active:scale-95 ml-1"
           >
             <Wallet className="w-4 h-4" />
             <span>
@@ -119,7 +133,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2">
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-neutral-600 dark:text-neutral-300"
@@ -131,6 +145,18 @@ export const Navbar = () => {
               <Moon className="w-5 h-5" />
             )}
           </button>
+
+          <a
+            href="https://discord.gg/blackfrica"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:text-[#5865F2]"
+            aria-label="Discord Community"
+          >
+            <svg className="w-5 h-5 fill-current" viewBox="0 0 127.14 96.36">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a74.56,74.56,0,0,0,64.3,0c.87.69,1.76,1.37,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,121.71,29.12,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.92,53.86,53,48.74,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.92,96.09,53,91,65.69,84.69,65.69Z" />
+            </svg>
+          </a>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
