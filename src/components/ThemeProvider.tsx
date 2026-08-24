@@ -1,15 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useThemeStore } from '@/store/useThemeStore';
+import { useIsMounted } from '@/hooks/useIsMounted';
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsMounted();
 
   useEffect(() => {
     if (!mounted) return;

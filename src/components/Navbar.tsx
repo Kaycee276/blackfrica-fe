@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -8,6 +8,7 @@ import { Sun, Moon, Search, Wallet, Menu, X } from 'lucide-react';
 import { useThemeStore } from '@/store/useThemeStore';
 import { useAppStore } from '@/store/useAppStore';
 import { useWalletStore } from '@/store/useWalletStore';
+import { useIsMounted } from '@/hooks/useIsMounted';
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -15,11 +16,7 @@ export const Navbar = () => {
   const { toggleSearch } = useAppStore();
   const { isConnected, address, openWalletModal } = useWalletStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsMounted();
 
   const navLinks = [
     { name: 'Home', href: '/' },
