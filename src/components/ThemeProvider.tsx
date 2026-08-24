@@ -1,10 +1,15 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useThemeStore } from '@/store/useThemeStore';
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -13,7 +18,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     } else {
       root.classList.remove('dark');
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   return <>{children}</>;
 };

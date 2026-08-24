@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${neueGalano.variable}`}>
+    <html lang="en" className={`dark ${neueGalano.variable}`} suppressHydrationWarning>
       <body className="bg-white dark:bg-[#131212] text-neutral-900 dark:text-neutral-100 font-sans font-light antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
         <ThemeProvider>
           <Navbar />
