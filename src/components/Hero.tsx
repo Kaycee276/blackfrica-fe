@@ -6,18 +6,43 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
+  const headlineText = "BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL OWNERSHIP...";
+  
+  // Brand color sequence in exact user order: Green, Red, Gold, Brown, Black
+  const colorCycle = [
+    "var(--brand-green)",
+    "var(--brand-red)",
+    "var(--brand-gold)",
+    "var(--brand-brown)",
+    "var(--brand-black)",
+  ];
+
+  let colorIndexCounter = 0;
+
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
-          {/* Main Headline formatted with the MamaKilo African font - wider layout on large screens */}
+          
+          {/* Main Headline with letter-by-letter brand color cycling: Green, Red, Gold, Brown, Black */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.05] font-mamakilo"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight uppercase leading-[1.05] font-mamakilo"
           >
-            BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL OWNERSHIP...
+            {headlineText.split("").map((char, index) => {
+              if (char === " ") {
+                return <span key={index}> </span>;
+              }
+              const color = colorCycle[colorIndexCounter % colorCycle.length];
+              colorIndexCounter++;
+              return (
+                <span key={index} style={{ color }}>
+                  {char}
+                </span>
+              );
+            })}
           </motion.h1>
 
           {/* Subheading directly matching Figma - wider layout on large screens */}
