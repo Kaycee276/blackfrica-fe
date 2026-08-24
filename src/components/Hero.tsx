@@ -9,23 +9,23 @@ export const Hero = () => {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
-          {/* Main Headline formatted with the new MamaKilo African font */}
+        <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
+          {/* Main Headline formatted with the MamaKilo African font - wider layout on large screens */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.1] font-mamakilo"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-text-primary uppercase leading-[1.05] font-mamakilo"
           >
             BRIDGING AFRICAN MODELING, FASHION, Art, AND DIGITAL OWNERSHIP...
           </motion.h1>
 
-          {/* Subheading directly matching Figma */}
+          {/* Subheading directly matching Figma - wider layout on large screens */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-text-secondary max-w-3xl leading-relaxed font-normal"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary max-w-4xl lg:max-w-5xl leading-relaxed font-normal"
           >
             To redefine the value of African modeling by turning creativity,
             identity, and culture into on-chain assets that empower models and
