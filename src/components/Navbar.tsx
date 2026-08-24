@@ -97,7 +97,7 @@ export const Navbar = () => {
           })}
         </nav>
 
-        {/* Right Actions & Utilities */}
+        {/* Right Actions & Utilities (Desktop) */}
         <div className="hidden md:flex items-center gap-2.5">
           {/* Search Trigger */}
           <button
@@ -153,20 +153,9 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile menu trigger */}
-        <div className="flex md:hidden items-center gap-1.5">
-          <button
-            onClick={toggleTheme}
-            className="p-1.5 rounded-lg text-text-secondary"
-            aria-label="Toggle theme"
-          >
-            {mounted && theme === "dark" ? (
-              <Sun className="w-4 h-4 text-brand-gold" />
-            ) : (
-              <Moon className="w-4 h-4" />
-            )}
-          </button>
-
+        {/* Mobile top bar controls (Sign in button brought OUT, theme toggle inside drawer) */}
+        <div className="flex md:hidden items-center gap-2">
+          {/* Discord Icon */}
           <a
             href="https://discord.com"
             target="_blank"
@@ -179,6 +168,19 @@ export const Navbar = () => {
             </svg>
           </a>
 
+          {/* Sign in / Wallet Button (Brought OUT to mobile top bar) */}
+          <button
+            onClick={openWalletModal}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-text-primary text-bg-primary font-semibold text-xs hover:bg-brand-gold hover:text-black transition-all active:scale-95"
+          >
+            <span>
+              {isConnected && address
+                ? `${address.slice(0, 4)}...${address.slice(-3)}`
+                : "Sign in"}
+            </span>
+          </button>
+
+          {/* Mobile menu trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1.5 text-text-primary"
@@ -238,31 +240,37 @@ export const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ delay: 0.15, duration: 0.25 }}
-              className="pt-4 border-t border-border-primary flex flex-col gap-3"
+              className="pt-4 border-t border-border-primary flex items-center justify-between gap-3"
             >
+              {/* Search Button */}
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   toggleSearch();
                 }}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-border-primary text-text-secondary text-sm font-medium"
+                className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg border border-border-primary text-text-secondary text-xs font-medium"
               >
                 <Search className="w-4 h-4" />
-                <span>Search collections & creators</span>
+                <span>Search</span>
               </button>
 
+              {/* Theme Toggle Button inside mobile drawer */}
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openWalletModal();
-                }}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-brand-gold text-black font-bold text-sm"
+                onClick={toggleTheme}
+                className="flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-border-primary text-text-secondary text-xs font-medium hover:bg-bg-tertiary transition-colors"
+                aria-label="Toggle theme"
               >
-                <span>
-                  {isConnected && address
-                    ? "Wallet Connected"
-                    : "Sign in / Connect Wallet"}
-                </span>
+                {mounted && theme === "dark" ? (
+                  <>
+                    <Sun className="w-4 h-4 text-brand-gold" />
+                    <span>Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4 text-text-primary" />
+                    <span>Dark Mode</span>
+                  </>
+                )}
               </button>
             </motion.div>
           </motion.div>
