@@ -7,21 +7,36 @@ import { Footer } from '@/components/Footer';
 import { WalletModal } from '@/components/WalletModal';
 import { SearchModal } from '@/components/SearchModal';
 
-const galanoGrotesque = localFont({
+const neueGalano = localFont({
   src: [
     {
-      path: './fonts/GalanoGrotesque-Regular.woff2',
+      path: './fonts/NeueGalanoUnlicensedTest-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/GalanoGrotesque-Medium.woff2',
+      path: './fonts/NeueGalanoUnlicensedTest-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: './fonts/GalanoGrotesque-Bold.woff2',
+      path: './fonts/NeueGalanoUnlicensedTest-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/NeueGalanoUnlicensedTest-Bold.woff2',
       weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/NeueGalanoUnlicensedTest-ExtraBold.woff2',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: './fonts/NeueGalanoUnlicensedTest-Black.woff2',
+      weight: '900',
       style: 'normal',
     },
   ],
@@ -41,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${galanoGrotesque.variable}`}>
+    <html lang="en" className={`dark ${neueGalano.variable}`}>
       <body className="bg-white dark:bg-[#131212] text-neutral-900 dark:text-neutral-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
         <ThemeProvider>
           <Navbar />
