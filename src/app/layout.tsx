@@ -10,6 +10,16 @@ import { SearchModal } from '@/components/SearchModal';
 const neueGalano = localFont({
   src: [
     {
+      path: './fonts/NeueGalanoUnlicensedTest-ExtraLight.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: './fonts/NeueGalanoUnlicensedTest-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
       path: './fonts/NeueGalanoUnlicensedTest-Regular.woff2',
       weight: '400',
       style: 'normal',
@@ -57,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${neueGalano.variable}`}>
-      <body className="bg-white dark:bg-[#131212] text-neutral-900 dark:text-neutral-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+      <body className="bg-white dark:bg-[#131212] text-neutral-900 dark:text-neutral-100 font-sans font-light antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
