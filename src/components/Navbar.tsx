@@ -70,7 +70,7 @@ export const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links with Framer Motion Left-to-Right Hover Underline */}
+        {/* Desktop Navigation Links with Active Page Underline & Left-to-Right Hover Animation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -92,15 +92,11 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
 
-                {/* Active Tab Spring Line */}
+                {/* Persistent Underline on Currently Active Page */}
                 {isActive ? (
-                  <motion.span
-                    layoutId="activeTabIndicator"
-                    className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full" />
                 ) : (
-                  /* Left-to-Right Expanding Underline */
+                  /* Left-to-Right Expanding Hover Underline for Inactive Pages */
                   <motion.span
                     variants={{
                       initial: { scaleX: 0 },
@@ -263,7 +259,11 @@ export const Navbar = () => {
                     >
                       {link.name}
                     </Link>
-                    {!isActive && (
+
+                    {/* Active Underline inside mobile drawer */}
+                    {isActive ? (
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-brand-gold rounded-full" />
+                    ) : (
                       <motion.span
                         variants={{
                           initial: { scaleX: 0 },
