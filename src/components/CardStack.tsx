@@ -32,7 +32,7 @@ export const CardStack = () => {
       title: "Model Trio",
       hoverRotation: -8,
       zIndex: 10,
-      offsetY: 35,
+      offsetY: 60,
       factor: -2,
     },
     {
@@ -68,7 +68,7 @@ export const CardStack = () => {
       title: "Tribal Portrait",
       hoverRotation: 8,
       zIndex: 10,
-      offsetY: 35,
+      offsetY: 60,
       factor: 2,
     },
   ];
@@ -85,14 +85,14 @@ export const CardStack = () => {
     <div className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center min-h-[420px] sm:min-h-[500px] overflow-hidden">
       {/* Cards Deck Container */}
       <div className="relative w-full max-w-6xl h-[360px] sm:h-[440px] md:h-[480px] flex items-center justify-center">
-        {cards.map((card) => {
+        {cards.map((card, idx) => {
           const calculatedX = getOffsetX(card.factor);
 
           return (
             <motion.div
               key={card.id}
-              initial={{ opacity: 0, scale: 0.85, y: 40 }}
-              animate={{
+              initial={{ opacity: 0, scale: 0.75, y: 70 }}
+              whileInView={{
                 opacity: 1,
                 scale: 0.96,
                 rotate: 0, // Zero tilt initially
@@ -100,6 +100,7 @@ export const CardStack = () => {
                 y: card.offsetY,
                 zIndex: card.zIndex,
               }}
+              viewport={{ once: true, margin: "-30px" }}
               whileHover={{
                 scale: 1.08,
                 rotate: card.hoverRotation, // Tilt strictly when hovered
@@ -107,7 +108,12 @@ export const CardStack = () => {
                 zIndex: 50,
                 transition: { duration: 0.25 },
               }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              transition={{
+                type: "spring",
+                stiffness: 220,
+                damping: 22,
+                delay: idx * 0.08, // Staggered entrance when scrolling into view
+              }}
               className="absolute cursor-pointer overflow-hidden rounded-md sm:rounded-lg shadow-2xl transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group opacity-95"
             >
               <Image
