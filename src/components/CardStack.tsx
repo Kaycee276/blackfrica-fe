@@ -24,6 +24,7 @@ export const CardStack = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Left-to-right image sequence requested: 1, 3, 5, 4, 2
   const cards: CardItem[] = [
     {
       id: "1",
@@ -35,9 +36,9 @@ export const CardStack = () => {
       factor: -2,
     },
     {
-      id: "2",
-      image: "/assets/hero-model-2.png",
-      title: "Tribal Portrait",
+      id: "3",
+      image: "/assets/hero-model-3.png",
+      title: "Vibrant Red Portrait",
       hoverRotation: -4,
       zIndex: 20,
       offsetY: 18,
@@ -53,18 +54,18 @@ export const CardStack = () => {
       factor: 0,
     },
     {
-      id: "3",
-      image: "/assets/hero-model-3.png",
-      title: "Vibrant Red Portrait",
+      id: "4",
+      image: "/assets/hero-model-4.png",
+      title: "Cowrie Shell Headpiece",
       hoverRotation: 4,
       zIndex: 20,
       offsetY: 18,
       factor: 1,
     },
     {
-      id: "4",
-      image: "/assets/hero-model-4.png",
-      title: "Cowrie Shell Headpiece",
+      id: "2",
+      image: "/assets/hero-model-2.png",
+      title: "Tribal Portrait",
       hoverRotation: 8,
       zIndex: 10,
       offsetY: 35,
