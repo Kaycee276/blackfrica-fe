@@ -100,7 +100,7 @@ export const CardStack = () => {
                 y: card.offsetY,
                 zIndex: card.zIndex,
               }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: false, margin: "-30px" }}
               whileHover={{
                 scale: 1.08,
                 rotate: card.hoverRotation, // Tilt strictly when hovered
@@ -112,7 +112,7 @@ export const CardStack = () => {
                 type: "spring",
                 stiffness: 220,
                 damping: 22,
-                delay: idx * 0.08, // Staggered entrance when scrolling into view
+                delay: idx * 0.08, // Staggered entrance whenever scrolled into view
               }}
               className="absolute cursor-pointer overflow-hidden rounded-md sm:rounded-lg shadow-2xl transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group opacity-95"
             >
