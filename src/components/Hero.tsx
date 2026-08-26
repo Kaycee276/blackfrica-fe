@@ -24,13 +24,13 @@ export const Hero = () => {
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
-          {/* Main Headline: Colored brand sequence for first part, straight up Black/White for DIGITAL OWNERSHIP... */}
+          {/* Main Headline: Reduced size font (text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl) */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight uppercase leading-[1.05] font-mamakilo"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight uppercase font-mamakilo leading-[1.1]"
           >
             {coloredPart.split("").map((char, index) => {
               if (char === " ") {
@@ -91,48 +91,6 @@ export const Hero = () => {
         <div className="mt-8">
           <CardStack />
         </div>
-
-        {/* Metric Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-30px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-border-primary max-w-5xl mx-auto"
-        >
-          <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">
-              100%
-            </h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
-              On-Chain Provenance
-            </p>
-          </div>
-          <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-              $1.2M+
-            </h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
-              Creator Value Generated
-            </p>
-          </div>
-          <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">
-              500+
-            </h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
-              Verified African Models
-            </p>
-          </div>
-          <div className="text-center p-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-              0%
-            </h3>
-            <p className="text-xs sm:text-sm text-text-muted mt-1 uppercase font-mono">
-              Middleman Exploitation
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
