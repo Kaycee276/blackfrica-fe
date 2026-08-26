@@ -27,7 +27,8 @@ export const Hero = () => {
           {/* Main Headline: Colored brand sequence for first part, straight up Black/White for DIGITAL OWNERSHIP... */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight uppercase leading-[1.05] font-mamakilo"
           >
@@ -51,7 +52,8 @@ export const Hero = () => {
           {/* Subheading directly matching Figma - wider layout on large screens */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-text-secondary max-w-4xl lg:max-w-5xl leading-relaxed font-normal"
           >
@@ -63,7 +65,8 @@ export const Hero = () => {
           {/* CTA Action Buttons matching Figma frame 16 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto"
           >
@@ -85,17 +88,18 @@ export const Hero = () => {
         </div>
 
         {/* Hero Interactive Card Showcase Fan */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-8"
-        >
+        <div className="mt-8">
           <CardStack />
-        </motion.div>
+        </div>
 
         {/* Metric Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-border-primary max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-30px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-border-primary max-w-5xl mx-auto"
+        >
           <div className="text-center p-4">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-gold">
               100%
@@ -128,7 +132,7 @@ export const Hero = () => {
               Middleman Exploitation
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
