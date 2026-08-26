@@ -25,7 +25,7 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
           
-          {/* Main Headline: Colored brand sequence for first part, straight up Black/White for DIGITAL OWNERSHIP... */}
+          {/* Main Headline: Colored brand sequence for first part, line break for laptop screens, solid Black/White for DIGITAL OWNERSHIP... */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,6 +44,9 @@ export const Hero = () => {
                 </span>
               );
             })}
+
+            {/* Line break forced on laptop screens and above (lg:block) to restrict headline to 2 lines */}
+            <br className="hidden lg:block" />
 
             {/* Straight up Black in light mode / White in dark mode for DIGITAL OWNERSHIP... */}
             <span className="text-text-primary">{monochromePart}</span>
