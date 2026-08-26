@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { CardStack } from "./CardStack";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export const Hero = () => {
   const coloredPart = "BRIDGING AFRICAN MODELING, FASHION, Art, AND ";
@@ -20,33 +20,72 @@ export const Hero = () => {
 
   let colorIndexCounter = 0;
 
+  // Staggered typewriter variants for headline write-in animation
+  const headlineContainerVariants: Variants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.02,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
+  const letterVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.15 },
+    },
+  };
+
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-16 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-6xl xl:max-w-7xl mx-auto space-y-6">
-          {/* Main Headline: Colored brand sequence for first part, straight up Black/White for DIGITAL OWNERSHIP... */}
+          {/* Main Headline: Typewriter write-in letter by letter animation */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: false, margin: "-30px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            variants={headlineContainerVariants}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight uppercase leading-[1.05] font-mamakilo"
           >
             {coloredPart.split("").map((char, index) => {
               if (char === " ") {
-                return <span key={index}> </span>;
+                return <span key={`colored-space-${index}`}> </span>;
               }
               const color = colorCycle[colorIndexCounter % colorCycle.length];
               colorIndexCounter++;
               return (
-                <span key={index} style={{ color }}>
+                <motion.span
+                  key={`colored-${index}`}
+                  variants={letterVariants}
+                  style={{ color, display: "inline-block" }}
+                >
                   {char}
-                </span>
+                </motion.span>
               );
             })}
 
             {/* Straight up Black in light mode / White in dark mode for DIGITAL OWNERSHIP... */}
-            <span className="text-text-primary">{monochromePart}</span>
+            {monochromePart.split("").map((char, index) => {
+              if (char === " ") {
+                return <span key={`mono-space-${index}`}> </span>;
+              }
+              return (
+                <motion.span
+                  key={`mono-${index}`}
+                  variants={letterVariants}
+                  className="text-text-primary"
+                  style={{ display: "inline-block" }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
           </motion.h1>
 
           {/* Subheading directly matching Figma - wider layout on large screens */}

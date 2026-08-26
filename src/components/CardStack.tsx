@@ -114,14 +114,13 @@ export const CardStack = () => {
                 damping: 22,
                 delay: idx * 0.08, // Staggered entrance whenever scrolled into view
               }}
-              className="absolute cursor-pointer overflow-hidden rounded-md sm:rounded-lg shadow-2xl transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group opacity-95"
+              className="absolute cursor-pointer overflow-hidden transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group opacity-95"
             >
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
                 sizes="(max-width: 768px) 200px, 320px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-md sm:rounded-lg"
                 priority={true}
               />
             </motion.div>
