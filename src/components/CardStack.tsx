@@ -15,7 +15,6 @@ interface CardItem {
 }
 
 export const CardStack = () => {
-  const [activeIndex, setActiveIndex] = useState(2); // center card active by default
   const [windowWidth, setWindowWidth] = useState<number>(1200);
 
   useEffect(() => {
@@ -85,22 +84,20 @@ export const CardStack = () => {
     <div className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center min-h-[420px] sm:min-h-[500px] overflow-hidden">
       {/* Cards Deck Container */}
       <div className="relative w-full max-w-6xl h-[360px] sm:h-[440px] md:h-[480px] flex items-center justify-center">
-        {cards.map((card, idx) => {
-          const isActive = activeIndex === idx;
+        {cards.map((card) => {
           const calculatedX = getOffsetX(card.factor);
 
           return (
             <motion.div
               key={card.id}
-              onClick={() => setActiveIndex(idx)}
               initial={{ opacity: 0, scale: 0.85, y: 40 }}
               animate={{
                 opacity: 1,
-                scale: isActive ? 1.05 : 0.94,
+                scale: 0.96,
                 rotate: card.rotation,
                 x: calculatedX,
-                y: card.offsetY + (isActive ? -18 : 0),
-                zIndex: isActive ? 40 : card.zIndex,
+                y: card.offsetY,
+                zIndex: card.zIndex,
               }}
               whileHover={{
                 scale: 1.08,
@@ -110,14 +107,14 @@ export const CardStack = () => {
                 transition: { duration: 0.25 },
               }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className={`absolute cursor-pointer overflow-hidden  transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group `}
+              className="absolute cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl transition-all duration-300 w-[190px] sm:w-[260px] md:w-[300px] lg:w-[320px] h-[280px] sm:h-[390px] md:h-[440px] group opacity-95"
             >
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
                 sizes="(max-width: 768px) 200px, 320px"
-                className=" group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-2xl sm:rounded-3xl"
                 priority={true}
               />
             </motion.div>
