@@ -125,9 +125,10 @@
    GLOBAL UTILITIES & TRANSITIONS
    ========================================================================== */
 
-*,
-*::before,
-*::after {
+/* Enable transition only after hydration to eliminate initial paint theme flash */
+html.hydrated *,
+html.hydrated *::before,
+html.hydrated *::after {
   transition:
     background-color 0.3s ease,
     color 0.3s ease,

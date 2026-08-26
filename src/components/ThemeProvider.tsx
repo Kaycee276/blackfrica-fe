@@ -2,22 +2,23 @@
 
 import React, { useEffect } from 'react';
 import { useThemeStore } from '@/store/useThemeStore';
-import { useIsMounted } from '@/hooks/useIsMounted';
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useThemeStore();
-  const mounted = useIsMounted();
 
   useEffect(() => {
-    if (!mounted) return;
-
     const root = document.documentElement;
+    
+    // Apply current theme class
     if (theme === 'dark') {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
-  }, [theme, mounted]);
+
+    // Mark as hydrated to enable smooth transition ONLY after initial paint
+    root.classList.add('hydrated');
+  }, [theme]);
 
   return <>{children}</>;
 };
