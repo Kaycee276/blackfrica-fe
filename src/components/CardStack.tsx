@@ -8,7 +8,7 @@ interface CardItem {
   id: string;
   image: string;
   title: string;
-  rotation: number;
+  hoverRotation: number;
   zIndex: number;
   offsetY: number;
   factor: number;
@@ -29,7 +29,7 @@ export const CardStack = () => {
       id: "1",
       image: "/assets/hero-model-1.png",
       title: "Model Trio",
-      rotation: -12,
+      hoverRotation: -8,
       zIndex: 10,
       offsetY: 35,
       factor: -2,
@@ -38,7 +38,7 @@ export const CardStack = () => {
       id: "2",
       image: "/assets/hero-model-2.png",
       title: "Tribal Portrait",
-      rotation: -6,
+      hoverRotation: -4,
       zIndex: 20,
       offsetY: 18,
       factor: -1,
@@ -47,7 +47,7 @@ export const CardStack = () => {
       id: "5",
       image: "/assets/hero-model-5.png",
       title: "Ethereal Ochre Crown",
-      rotation: 0,
+      hoverRotation: -3,
       zIndex: 30,
       offsetY: 0,
       factor: 0,
@@ -56,7 +56,7 @@ export const CardStack = () => {
       id: "3",
       image: "/assets/hero-model-3.png",
       title: "Vibrant Red Portrait",
-      rotation: 6,
+      hoverRotation: 4,
       zIndex: 20,
       offsetY: 18,
       factor: 1,
@@ -65,19 +65,19 @@ export const CardStack = () => {
       id: "4",
       image: "/assets/hero-model-4.png",
       title: "Cowrie Shell Headpiece",
-      rotation: 12,
+      hoverRotation: 8,
       zIndex: 10,
       offsetY: 35,
       factor: 2,
     },
   ];
 
-  // Calculate overlapping horizontal position to match exact Figma fanned arc
+  // Calculate overlapping horizontal position
   const getOffsetX = (factor: number) => {
     if (windowWidth < 640) return factor * 60; // Mobile compact overlap
     if (windowWidth < 1024) return factor * 130; // Tablet overlap
     if (windowWidth < 1280) return factor * 165; // Laptop overlap
-    return factor * 190; // Desktop fanned overlap matching Figma
+    return factor * 190; // Desktop fanned overlap
   };
 
   return (
@@ -94,14 +94,14 @@ export const CardStack = () => {
               animate={{
                 opacity: 1,
                 scale: 0.96,
-                rotate: card.rotation,
+                rotate: 0, // Zero tilt initially
                 x: calculatedX,
                 y: card.offsetY,
                 zIndex: card.zIndex,
               }}
               whileHover={{
                 scale: 1.08,
-                rotate: 0,
+                rotate: card.hoverRotation, // Tilt strictly when hovered
                 y: card.offsetY - 20,
                 zIndex: 50,
                 transition: { duration: 0.25 },
