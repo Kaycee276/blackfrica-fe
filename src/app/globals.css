@@ -27,7 +27,7 @@
   /* --- Brand Colors (Green, Red, Gold, Brown, Black) --- */
   --brand-green: #029834;
   --brand-red: #fe0002;
-  --brand-gold: #f59e0b;
+  --brand-gold: #ff6600;
   --brand-brown: #673301;
   --brand-black: #000000;
   --brand-gold-hover: #d97706;
@@ -66,7 +66,7 @@
   /* --- Brand Colors Dark Mode Contrast Adjustments --- */
   --brand-green: #10b981;
   --brand-red: #ef4444;
-  --brand-gold: #f59e0b;
+  --brand-gold: #ff6600;
   --brand-brown: #d97706;
   --brand-black: #ffffff; /* White in dark mode for high contrast against carbon dark */
 
