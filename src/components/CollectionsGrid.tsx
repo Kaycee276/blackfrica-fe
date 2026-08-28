@@ -37,10 +37,10 @@ export const CollectionsGrid = () => {
               </h2>
 
               <p className="text-sm sm:text-base md:text-lg text-text-secondary max-w-full font-normal leading-relaxed">
-                BLACKfrica transforms its fashion editorials, model campaigns, and
-                styled photography into limited-edition digital collectibles
-                (NFTs) - giving fans, collectors, and brands a new way to support
-                and engage with African modelling culture.
+                BLACKfrica transforms its fashion editorials, model campaigns,
+                and styled photography into limited-edition digital collectibles
+                (NFTs) - giving fans, collectors, and brands a new way to
+                support and engage with African modelling culture.
                 <br />
                 <br />
                 Every photoshoot becomes a collectible. Every model becomes a
@@ -75,9 +75,9 @@ export const CollectionsGrid = () => {
       <section className="w-full bg-bg-secondary border-t border-border-primary py-16 sm:py-24 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
-          <div className="mb-10 border-b border-border-primary pb-6 text-left">
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase text-text-primary tracking-tight font-mamakilo">
-              Featured <span className="text-brand-gold">Collections</span>
+          <div className="mb-10 text-left">
+            <h3 className="text-3xl sm:text-4xl font-bold text-text-primary ">
+              Featured Collections
             </h3>
           </div>
 
@@ -88,10 +88,10 @@ export const CollectionsGrid = () => {
                 item.category === "art"
                   ? "Blackfrica Art"
                   : item.category === "fashion"
-                  ? "Blackfrica Fashion"
-                  : item.category === "hybrid"
-                  ? "Blackfrica Hybrid"
-                  : "Blackfrica Modeling";
+                    ? "Blackfrica Fashion"
+                    : item.category === "hybrid"
+                      ? "Blackfrica Hybrid"
+                      : "Blackfrica Modeling";
 
               return (
                 <motion.div
@@ -100,7 +100,7 @@ export const CollectionsGrid = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, margin: "-30px" }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="group rounded-2xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl hover:border-brand-gold transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group rounded-lg bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl hover:border-brand-gold transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* Image Container */}
                   <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-bg-primary mb-4">
