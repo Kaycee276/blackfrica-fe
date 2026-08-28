@@ -2,15 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export const CollectionsGrid = () => {
   return (
-    <section className="relative w-full min-h-105 sm:min-h-120 md:min-h-125 flex items-center overflow-hidden py-2 sm:py-4">
-      {/* Full-Width Background Pattern Image */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    <section className="relative w-full min-h-[300px] sm:min-h-[360px] md:min-h-[400px] flex items-center overflow-hidden py-2">
+      {/* Full-Width Background Pattern Image with Reduced Height */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[260px] sm:h-[320px] md:h-[360px] pointer-events-none z-0 overflow-hidden">
         <Image
           src="/assets/blackfrica-pattern.png"
           alt="Blackfrica Cultural Pattern Background"
@@ -29,27 +27,19 @@ export const CollectionsGrid = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-7 flex flex-col items-start text-left space-y-5"
+            className="md:col-span-9 flex flex-col items-start text-left space-y-5"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-text-primary leading-tight font-mamakilo">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-text-primary font-mamakilo">
               BLACKfrica NFT Ecosystem
             </h2>
 
-            <p className="text-base sm:text-lg text-text-secondary max-w-lg leading-relaxed font-normal">
-              Redefining cultural provenance into on-chain digital assets.
-              Empowering African models, fashion designers, and creators through
-              sovereign Web3 ownership.
+            <p className="text-base sm:text-lg text-text-secondary max-w-full font-normal">
+              BLACKfrica transforms its fashion editorials, model campaigns, and
+              styled photography into limited-edition digital collectibles
+              (NFTs) - giving fans, collectors, and brands a new way to support
+              and engage with African modelling culture. Every photoshoot
+              becomes a collectible. every model becomes a digital icon.
             </p>
-
-            <div className="pt-2">
-              <Link
-                href="/collections"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-gold hover:bg-brand-gold-hover text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-md hover:shadow-brand-gold-glow group active:scale-95"
-              >
-                <span>EXPLORE ECOSYSTEM</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
           </motion.div>
 
           {/* Right Column: Featured Asset Image */}
@@ -58,7 +48,7 @@ export const CollectionsGrid = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="md:col-span-5 flex justify-center md:justify-end"
+            className="md:col-span-3 flex justify-center md:justify-end"
           >
             <div className="relative w-full max-w-sm sm:max-w-md h-[360px] sm:h-[420px] md:h-[460px] lg:h-[500px]">
               <Image
