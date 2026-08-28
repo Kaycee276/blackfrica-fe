@@ -82,9 +82,9 @@ export const CardStack = () => {
   };
 
   return (
-    <div className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center min-h-[420px] sm:min-h-[500px] overflow-hidden">
+    <div className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center min-h-185 sm:min-h-125 overflow-hidden">
       {/* Cards Deck Container */}
-      <div className="relative w-full max-w-6xl h-[360px] sm:h-[440px] md:h-[480px] flex items-center justify-center">
+      <div className="relative w-full max-w-6xl h-90 sm:h-110 md:h-120 flex items-center justify-center">
         {cards.map((card, idx) => {
           const calculatedX = getOffsetX(card.factor);
 
