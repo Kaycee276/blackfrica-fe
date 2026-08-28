@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
-  const coloredPart = "BRIDGING AFRICAN MODELING, FASHION, Art, AND ";
-  const monochromePart = "DIGITAL OWNERSHIP...";
+  const coloredPart = "Bridging African Modeling, Fashion, Art, and ";
+  const monochromePart = "Digital Ownership...";
 
   // Brand color sequence in exact user order: Green, Red, Gold, Brown, Black
   const colorCycle = [
@@ -30,7 +30,7 @@ export const Hero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight uppercase font-mamakilo leading-[1.1]"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight font-mamakilo leading-[1.1]"
           >
             {coloredPart.split("").map((char, index) => {
               if (char === " ") {
