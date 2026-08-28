@@ -60,17 +60,15 @@ export const CollectionsGrid = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="md:col-span-5 flex justify-center md:justify-end"
           >
-            <div className="relative w-full max-w-md h-[460px] sm:h-[540px] md:h-[600px] lg:h-[640px]">
+            <div className="relative w-full max-w-sm sm:max-w-md h-[360px] sm:h-[420px] md:h-[460px] lg:h-[500px]">
               <Image
                 src="/assets/face-model-1.png"
                 alt="BLACKfrica NFT Ecosystem Asset"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-contain object-center"
+                className="object-contain object-center scale-85 sm:scale-80 origin-center transition-transform"
                 priority
               />
-              {/* Soft Ambient Inner Glow */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
             </div>
           </motion.div>
         </div>
