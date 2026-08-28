@@ -82,12 +82,16 @@ export const CollectionsGrid = () => {
           </div>
 
           {/* Featured Collections Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {collectionsData.map((item, idx) => {
               const imageType =
                 item.category === "art"
                   ? "Blackfrica Art"
-                  : "Blackfrica Fashion";
+                  : item.category === "fashion"
+                  ? "Blackfrica Fashion"
+                  : item.category === "hybrid"
+                  ? "Blackfrica Hybrid"
+                  : "Blackfrica Modeling";
 
               return (
                 <motion.div
@@ -104,7 +108,7 @@ export const CollectionsGrid = () => {
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
 
@@ -116,7 +120,7 @@ export const CollectionsGrid = () => {
 
                   {/* Collection Name & Creator's Name */}
                   <div className="space-y-1 text-left">
-                    <h4 className="text-lg font-bold text-text-primary group-hover:text-brand-gold transition-colors line-clamp-1">
+                    <h4 className="text-base font-bold text-text-primary group-hover:text-brand-gold transition-colors line-clamp-1">
                       {item.title}
                     </h4>
                     <p className="text-xs text-text-muted font-medium">
