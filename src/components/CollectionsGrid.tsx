@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const CollectionsGrid = () => {
   return (
-    <section className="relative w-full min-h-105 sm:min-h-120 md:min-h-125 flex items-center overflow-hidden bg-bg-primary py-5 sm:py-10">
+    <section className="relative w-full min-h-105 sm:min-h-120 md:min-h-125 flex items-center overflow-hidden py-2 sm:py-4">
       {/* Full-Width Background Pattern Image */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <Image
@@ -60,13 +60,13 @@ export const CollectionsGrid = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="md:col-span-5 flex justify-center md:justify-end"
           >
-            <div className="relative w-full max-w-md h-[340px] sm:h-[400px] md:h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+            <div className="relative w-full max-w-md h-[460px] sm:h-[540px] md:h-[600px] lg:h-[640px]">
               <Image
-                src="/assets/hero-model-5.png"
+                src="/assets/face-model-1.png"
                 alt="BLACKfrica NFT Ecosystem Asset"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-contain object-center"
                 priority
               />
               {/* Soft Ambient Inner Glow */}
