@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { collectionsData } from "@/data/collectionsData";
 import { motion } from "framer-motion";
@@ -76,7 +75,7 @@ export const CollectionsGrid = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className="mb-10 text-left">
-            <h3 className="text-3xl sm:text-4xl font-bold text-text-primary ">
+            <h3 className="text-3xl sm:text-4xl font-bold text-text-primary">
               Featured Collections
             </h3>
           </div>
@@ -103,7 +102,7 @@ export const CollectionsGrid = () => {
                   className="group rounded-lg bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl hover:border-brand-gold transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* Image Container */}
-                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-bg-primary mb-4">
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-bg-primary mb-3">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -111,23 +110,23 @@ export const CollectionsGrid = () => {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-
-                    {/* Image Type Tag */}
-                    <span className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase text-brand-gold border border-brand-gold-border">
-                      {imageType}
-                    </span>
                   </div>
 
-                  {/* Collection Name & Creator's Name */}
-                  <div className="space-y-1 text-left">
-                    <h4 className="text-base font-bold text-text-primary group-hover:text-brand-gold transition-colors line-clamp-1">
+                  {/* Details below image (Category -> Collection Name -> Creator's Name) - ALL NOT IN BOLD */}
+                  <div className="space-y-1 text-left font-normal">
+                    {/* Line 1: Image Category */}
+                    <p className="text-xs text-brand-gold font-normal tracking-wide">
+                      {imageType}
+                    </p>
+
+                    {/* Line 2: Collection Name */}
+                    <p className="text-base text-text-primary font-normal line-clamp-1">
                       {item.title}
-                    </h4>
-                    <p className="text-xs text-text-muted font-medium">
-                      by{" "}
-                      <strong className="text-text-primary font-semibold">
-                        {item.creator}
-                      </strong>
+                    </p>
+
+                    {/* Line 3: Creator's Name */}
+                    <p className="text-xs text-text-muted font-normal">
+                      {item.creator}
                     </p>
                   </div>
                 </motion.div>
