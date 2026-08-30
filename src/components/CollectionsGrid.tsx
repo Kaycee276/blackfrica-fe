@@ -74,11 +74,17 @@ export const CollectionsGrid = () => {
       <section className="w-full bg-bg-secondary border-t border-border-primary py-16 sm:py-24 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
-          <div className="mb-10 text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-30px" }}
+            transition={{ duration: 0.5 }}
+            className="mb-10 text-left"
+          >
             <h3 className="text-3xl sm:text-4xl font-bold text-text-primary">
               Featured Collections
             </h3>
-          </div>
+          </motion.div>
 
           {/* Featured Collections Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -95,11 +101,16 @@ export const CollectionsGrid = () => {
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 35, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: false, margin: "-30px" }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="group rounded-xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between "
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: idx * 0.1,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                  className="group rounded-xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-2xl hover:border-brand-gold/50 transition-colors duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* Image Container */}
                   <div className="relative w-full aspect-4/5 rounded-sm overflow-hidden bg-bg-primary mb-3">
@@ -108,11 +119,11 @@ export const CollectionsGrid = () => {
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover "
+                      className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
                   </div>
 
-                  {/* Details below image (Category -> Collection Name -> Creator's Name) - ALL NOT IN BOLD */}
+                  {/* Details below image */}
                   <div className="space-y-1 text-center">
                     {/* Line 1: Image Category */}
                     <p className="text-xs font-lighter tracking-wide">
