@@ -12,10 +12,9 @@ export default function Home() {
       {/* Featured Collections */}
       <CollectionsGrid />
 
-      <StorySection>
-        {/* Featured Creators Section */}
-        <CreatorsSection />
-      </StorySection>
+      <StorySection />
+      {/* Featured Creators Section */}
+      <CreatorsSection />
     </div>
   );
 }
