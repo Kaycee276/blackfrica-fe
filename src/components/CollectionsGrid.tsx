@@ -99,33 +99,33 @@ export const CollectionsGrid = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, margin: "-30px" }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="group rounded-lg bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl hover:border-brand-gold transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group rounded-xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between "
                 >
                   {/* Image Container */}
-                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-bg-primary mb-3">
+                  <div className="relative w-full aspect-4/5 rounded-sm overflow-hidden bg-bg-primary mb-3">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover "
                     />
                   </div>
 
                   {/* Details below image (Category -> Collection Name -> Creator's Name) - ALL NOT IN BOLD */}
-                  <div className="space-y-1 text-left font-normal">
+                  <div className="space-y-1 text-center">
                     {/* Line 1: Image Category */}
-                    <p className="text-xs text-brand-gold font-normal tracking-wide">
+                    <p className="text-xs font-lighter tracking-wide">
                       {imageType}
                     </p>
 
                     {/* Line 2: Collection Name */}
-                    <p className="text-base text-text-primary font-normal line-clamp-1">
+                    <p className="text-base text-text-primary font-bold line-clamp-1">
                       {item.title}
                     </p>
 
                     {/* Line 3: Creator's Name */}
-                    <p className="text-xs text-text-muted font-normal">
+                    <p className="text-xs text-text-muted font-lighter">
                       {item.creator}
                     </p>
                   </div>
