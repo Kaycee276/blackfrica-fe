@@ -12,9 +12,10 @@ interface StorySectionProps {
 export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
   const stackedImages = [
     {
-      src: "/assets/collections/art-1.png",
+      src: "/assets/story-2.png",
+
       alt: "African Fashion Story Model 3",
-      rotation: "-14deg",
+      rotation: "-45deg",
       translateY: "16px",
       translateX: "-36px",
       zIndex: 10,
@@ -22,13 +23,13 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
     {
       src: "/assets/story-1.png",
       alt: "African Fashion Story Model 2",
-      rotation: "-7deg",
+      rotation: "-30deg",
       translateY: "8px",
       translateX: "-18px",
       zIndex: 20,
     },
     {
-      src: "/assets/story-2.png",
+      src: "/assets/collections/art-1.png",
       alt: "African Fashion Story Model 1 (Topmost)",
       rotation: "0deg",
       translateY: "0px",
@@ -104,7 +105,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     delay: idx * 0.12,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
-                  className="absolute w-56 sm:w-64 md:w-72 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-2 border-card-border bg-card-bg cursor-pointer transition-shadow hover:shadow-brand-gold-glow"
+                  className="absolute w-56 sm:w-64 md:w-72 aspect-[3/4] rounded-md sm:rounded-lg overflow-hidden"
                 >
                   <Image
                     src={img.src}
@@ -114,7 +115,6 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     className="object-cover object-top"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 </motion.div>
               ))}
             </div>
