@@ -104,22 +104,21 @@ export const CollectionsGrid = () => {
                   initial={{ opacity: 0, y: 35, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: false, margin: "-30px" }}
-                  whileHover={{ y: -8, scale: 1.02 }}
                   transition={{
                     duration: 0.5,
                     delay: idx * 0.1,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
-                  className="group rounded-xl bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-2xl hover:border-brand-gold/50 transition-colors duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group rounded-sm bg-card-bg border border-card-border p-4 shadow-sm hover:shadow-2xl transition-colors duration-300 flex flex-col justify-between "
                 >
                   {/* Image Container */}
-                  <div className="relative w-full aspect-4/5 rounded-sm overflow-hidden bg-bg-primary mb-3">
+                  <div className="relative w-full aspect-4/5 overflow-hidden bg-bg-primary mb-3">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      className="object-cover transition-transform duration-700 ease-out"
                     />
                   </div>
 
