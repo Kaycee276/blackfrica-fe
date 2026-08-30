@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { CollectionsGrid } from "@/components/CollectionsGrid";
 import { CreatorsSection } from "@/components/CreatorsSection";
-import {StorySection} from "@/components/StorySection";
+import { StorySection } from "@/components/StorySection";
 
 export default function Home() {
   return (
@@ -13,8 +13,9 @@ export default function Home() {
       <CollectionsGrid />
 
       <StorySection>
-      {/* Featured Creators Section */}
-      <CreatorsSection />
+        {/* Featured Creators Section */}
+        <CreatorsSection />
+      </StorySection>
     </div>
   );
 }
