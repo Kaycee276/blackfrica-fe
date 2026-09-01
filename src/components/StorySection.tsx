@@ -13,27 +13,23 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
   const stackedImages = [
     {
       src: "/assets/story-2.png",
-
       alt: "African Fashion Story Model 3",
-      rotation: "-45deg",
-      translateY: "16px",
-      translateX: "-36px",
+      translateX: "-60px",
+      translateY: "12px",
       zIndex: 10,
     },
     {
       src: "/assets/story-1.png",
       alt: "African Fashion Story Model 2",
-      rotation: "-30deg",
-      translateY: "8px",
-      translateX: "-18px",
+      translateX: "-30px",
+      translateY: "6px",
       zIndex: 20,
     },
     {
       src: "/assets/collections/art-1.png",
       alt: "African Fashion Story Model 1 (Topmost)",
-      rotation: "0deg",
-      translateY: "0px",
       translateX: "0px",
+      translateY: "0px",
       zIndex: 30,
     },
   ];
@@ -85,18 +81,16 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                 <motion.div
                   key={idx}
                   style={{ zIndex: img.zIndex }}
-                  initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{
                     opacity: 1,
                     scale: 1,
-                    rotate: img.rotation,
                     x: img.translateX,
                     y: img.translateY,
                   }}
                   viewport={{ once: false }}
                   whileHover={{
-                    scale: 1.06,
-                    rotate: "0deg",
+                    scale: 1.05,
                     zIndex: 40,
                     transition: { duration: 0.3 },
                   }}
