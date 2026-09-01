@@ -11,18 +11,18 @@ interface StorySectionProps {
 
 export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
   const stackedImages = [
-    // {
-    //   src: "/assets/story-2.png",
-    //   alt: "African Fashion Story Model 3",
-    //   translateX: "-60px",
-    //   translateY: "12px",
-    //   zIndex: 10,
-    // },
+    {
+      src: "/assets/story-2.png",
+      alt: "African Fashion Story Model 3",
+      translateX: "-27px",
+      translateY: "85px",
+      zIndex: 10,
+    },
     {
       src: "/assets/story-1.png",
       alt: "African Fashion Story Model 2",
-      translateX: "-100px",
-      translateY: "6px",
+      translateX: "-97px",
+      translateY: "60px",
       zIndex: 20,
     },
     {
@@ -30,7 +30,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
       alt: "African Fashion Story Model 1 (Topmost)",
       translateX: "0px",
       translateY: "0px",
-      scale: 0.82,
+      scale: 0.79,
       zIndex: 30,
     },
   ];
@@ -45,7 +45,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 flex flex-col items-start text-left space-y-6"
+            className="lg:col-span-9 flex flex-col items-start text-left space-y-6"
           >
             <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-extralight text-text-primary uppercase tracking-wider leading-tight">
               Each Collection Tells a story
@@ -75,7 +75,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-6 flex justify-center lg:justify-end"
+            className="lg:col-span-3 flex justify-center lg:justify-end"
           >
             <div className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] lg:h-[720px] flex items-center justify-center">
               {stackedImages.map((img, idx) => (
