@@ -44,7 +44,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 flex flex-col items-start text-left space-y-6"
+            className="lg:col-span-6 flex flex-col items-start text-left space-y-6"
           >
             <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-extralight text-text-primary uppercase tracking-wider leading-tight">
               Each Collection Tells a story
@@ -74,7 +74,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="lg:col-span-6 flex justify-center lg:justify-end"
           >
             <div className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] lg:h-[720px] flex items-center justify-center">
               {stackedImages.map((img, idx) => (
@@ -98,14 +98,13 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     delay: idx * 0.12,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
-                  className="absolute w-full max-w-full aspect-[3/4] rounded-lg sm:rounded-xl overflow-hidden"
+                  className="absolute w-full max-w-sm aspect-[3/4] overflow-hidden"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top"
+                    className="object-contain object-center"
                     priority
                   />
                 </motion.div>
