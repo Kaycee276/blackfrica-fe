@@ -11,17 +11,17 @@ interface StorySectionProps {
 
 export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
   const stackedImages = [
-    {
-      src: "/assets/story-2.png",
-      alt: "African Fashion Story Model 3",
-      translateX: "-60px",
-      translateY: "12px",
-      zIndex: 10,
-    },
+    // {
+    //   src: "/assets/story-2.png",
+    //   alt: "African Fashion Story Model 3",
+    //   translateX: "-60px",
+    //   translateY: "12px",
+    //   zIndex: 10,
+    // },
     {
       src: "/assets/story-1.png",
       alt: "African Fashion Story Model 2",
-      translateX: "-30px",
+      translateX: "-100px",
       translateY: "6px",
       zIndex: 20,
     },
@@ -76,7 +76,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-sm sm:max-w-md h-[380px] sm:h-[450px] md:h-[480px] flex items-center justify-center">
+            <div className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] lg:h-[720px] flex items-center justify-center">
               {stackedImages.map((img, idx) => (
                 <motion.div
                   key={idx}
@@ -90,7 +90,6 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                   }}
                   viewport={{ once: false }}
                   whileHover={{
-                    scale: 1.05,
                     zIndex: 40,
                     transition: { duration: 0.3 },
                   }}
@@ -99,13 +98,13 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     delay: idx * 0.12,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
-                  className="absolute w-56 sm:w-64 md:w-72 aspect-[3/4] rounded-md sm:rounded-lg overflow-hidden"
+                  className="absolute w-full max-w-full aspect-[3/4] rounded-lg sm:rounded-xl overflow-hidden"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    sizes="(max-width: 768px) 224px, 288px"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-top"
                     priority
                   />
