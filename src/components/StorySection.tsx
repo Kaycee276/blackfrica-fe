@@ -30,6 +30,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
       alt: "African Fashion Story Model 1 (Topmost)",
       translateX: "0px",
       translateY: "0px",
+      scale: 0.82,
       zIndex: 30,
     },
   ];
@@ -81,10 +82,10 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                 <motion.div
                   key={idx}
                   style={{ zIndex: img.zIndex }}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.7 }}
                   whileInView={{
                     opacity: 1,
-                    scale: 1,
+                    scale: img.scale ?? 1,
                     x: img.translateX,
                     y: img.translateY,
                   }}
