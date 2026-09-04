@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { CollectionsGrid } from "@/components/CollectionsGrid";
 import { CreatorsSection } from "@/components/CreatorsSection";
 import { StorySection } from "@/components/StorySection";
+import { WhyCollect } from "@/components/WhyCollect";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
 
       <StorySection />
       {/* Featured Creators Section */}
+      <WhyCollect />
       <CreatorsSection />
     </div>
   );
