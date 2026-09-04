@@ -82,7 +82,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                 <motion.div
                   key={idx}
                   style={{ zIndex: img.zIndex }}
-                  initial={{ opacity: 0, scale: 0.7 }}
+                  initial={{ opacity: 1, scale: 0.7 }}
                   whileInView={{
                     opacity: 1,
                     scale: img.scale ?? 1,
@@ -90,10 +90,6 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     y: img.translateY,
                   }}
                   viewport={{ once: false }}
-                  whileHover={{
-                    zIndex: 40,
-                    transition: { duration: 0.3 },
-                  }}
                   transition={{
                     duration: 0.6,
                     delay: idx * 0.12,
