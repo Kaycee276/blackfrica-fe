@@ -105,6 +105,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ children }) => {
                     src={img.src}
                     alt={img.alt}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-contain object-center"
                     priority
                   />
