@@ -6,17 +6,19 @@ import { motion } from "framer-motion";
 
 export const WhyCollect = () => {
   const points = [
-    { text: "Access to IRL and virtual events.", indent: "ml-0" },
-    { text: "Voting rights on future collections.", indent: "ml-6 sm:ml-12" },
-    { text: "Exclusive behind-the-scenes content.", indent: "ml-12 sm:ml-24" },
-    { text: "Early access to fashion and art collaboration", indent: "ml-18 sm:ml-36" },
+    { text: "Access to IRL and virtual events.", indent: "ml-6 sm:ml-12" },
+    { text: "Voting rights on future collections.", indent: "ml-12 sm:ml-24" },
+    { text: "Exclusive behind-the-scenes content.", indent: "ml-18 sm:ml-36" },
+    {
+      text: "Early access to fashion and art collaboration",
+      indent: "ml-24 sm:ml-48",
+    },
   ];
 
   return (
-    <section className="relative w-full py-20 sm:py-32 bg-bg-primary overflow-hidden transition-colors min-h-[650px] sm:min-h-[750px] flex items-center">
+    <section className="relative w-full py-20 sm:py-32 overflow-hidden transition-colors min-h-[650px] sm:min-h-[750px] flex items-center">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* Left Side: Headline & Staggered Bullet List */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -26,10 +28,10 @@ export const WhyCollect = () => {
             className="lg:col-span-7 flex flex-col items-start text-left z-20"
           >
             {/* Top Accent Gradient Bar (Green -> Gold -> Red) */}
-            <div className="w-16 h-2 rounded-full bg-gradient-to-r from-[#029834] via-[#f59e0b] to-[#fe0002] mb-6" />
+            <div className="w-20 h-1.5 rounded-full bg-[linear-gradient(to_right,black,#029834,#795548,#fe0002,#f59e0b)] mb-6" />
 
             {/* Headline */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary tracking-tight mb-10">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl text-text-primary tracking-tight mb-10">
               Why Collect?
             </h2>
 
@@ -45,8 +47,8 @@ export const WhyCollect = () => {
                   className={`flex items-center gap-3 ${pt.indent}`}
                 >
                   {/* Two-color Dot (Green & Red) */}
-                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-[#029834] to-[#fe0002] flex-shrink-0 inline-block shadow-sm" />
-                  <span className="text-lg sm:text-xl md:text-2xl text-text-secondary font-light tracking-wide">
+                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-[#029834] to-[#fe0002] shrink-0 inline-block shadow-sm" />
+                  <span className="text-lg sm:text-xl md:text-2xl text-text-secondary font-extralight tracking-wide">
                     {pt.text}
                   </span>
                 </motion.div>
@@ -56,7 +58,6 @@ export const WhyCollect = () => {
 
           {/* Right Side & Background: Tilted Floating Images Matching Screenshot Layout */}
           <div className="lg:col-span-5 relative w-full h-[400px] sm:h-[500px] lg:h-[550px] flex items-center justify-center">
-            
             {/* 1. Top-Center Tilted Small Image */}
             <motion.div
               initial={{ opacity: 0, y: -20, rotate: 0 }}
@@ -124,9 +125,7 @@ export const WhyCollect = () => {
                 className="object-cover"
               />
             </motion.div>
-
           </div>
-
         </div>
       </div>
     </section>
